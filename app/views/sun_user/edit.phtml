@@ -1,0 +1,105 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(array("sun_user", "Back")) ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>
+        Edit sun_user
+    </h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<?php
+    echo $this->tag->form(
+        array(
+            "sun_user/save",
+            "autocomplete" => "off",
+            "class" => "form-horizontal"
+        )
+    );
+?>
+
+<div class="form-group">
+    <label for="fieldUsername" class="col-sm-2 control-label">Username</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("username", "size" => 30, "class" => "form-control", "id" => "fieldUsername")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldPasswordHash" class="col-sm-2 control-label">Password Of Hash</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("password_hash", "size" => 30, "class" => "form-control", "id" => "fieldPasswordHash")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldPasswordResetToken" class="col-sm-2 control-label">Password Of Reset Of Token</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("password_reset_token", "size" => 30, "class" => "form-control", "id" => "fieldPasswordResetToken")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldEmail" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("email", "size" => 30, "class" => "form-control", "id" => "fieldEmail")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldRealname" class="col-sm-2 control-label">Realname</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("realname", "size" => 30, "class" => "form-control", "id" => "fieldRealname")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldStatus" class="col-sm-2 control-label">Status</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("status", "type" => "number", "class" => "form-control", "id" => "fieldStatus")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldCreateUser" class="col-sm-2 control-label">Create Of User</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("create_user", "size" => 30, "class" => "form-control", "id" => "fieldCreateUser")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldCreatedAt" class="col-sm-2 control-label">Created</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("created_at", "type" => "number", "class" => "form-control", "id" => "fieldCreatedAt")) ?>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="fieldUpdatedAt" class="col-sm-2 control-label">Updated</label>
+    <div class="col-sm-10">
+        <?php echo $this->tag->textField(array("updated_at", "type" => "number", "class" => "form-control", "id" => "fieldUpdatedAt")) ?>
+    </div>
+</div>
+
+
+<?php echo $this->tag->hiddenField("id") ?>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+        <?php echo $this->tag->submitButton(array("Save", "class" => "btn btn-default")) ?>
+    </div>
+</div>
+
+<?php echo $this->tag->endForm(); ?>

@@ -1,0 +1,115 @@
+<?php 
+
+use Phalcon\Db\Column;
+use Phalcon\Db\Index;
+use Phalcon\Db\Reference;
+use Phalcon\Mvc\Model\Migration;
+
+/**
+ * Class SunAuthItemMigration_101
+ */
+class SunAuthItemMigration_101 extends Migration
+{
+    /**
+     * Define the table structure
+     *
+     * @return void
+     */
+    public function morph()
+    {
+        $this->morphTable('sun_auth_item', array(
+                'columns' => array(
+                    new Column(
+                        'name',
+                        array(
+                            'type' => Column::TYPE_VARCHAR,
+                            'notNull' => true,
+                            'size' => 64,
+                            'first' => true
+                        )
+                    ),
+                    new Column(
+                        'type',
+                        array(
+                            'type' => Column::TYPE_INTEGER,
+                            'notNull' => true,
+                            'size' => 11,
+                            'after' => 'name'
+                        )
+                    ),
+                    new Column(
+                        'description',
+                        array(
+                            'type' => Column::TYPE_TEXT,
+                            'size' => 1,
+                            'after' => 'type'
+                        )
+                    ),
+                    new Column(
+                        'rule_name',
+                        array(
+                            'type' => Column::TYPE_VARCHAR,
+                            'size' => 64,
+                            'after' => 'description'
+                        )
+                    ),
+                    new Column(
+                        'data',
+                        array(
+                            'type' => Column::TYPE_TEXT,
+                            'size' => 1,
+                            'after' => 'rule_name'
+                        )
+                    ),
+                    new Column(
+                        'created_at',
+                        array(
+                            'type' => Column::TYPE_INTEGER,
+                            'size' => 11,
+                            'after' => 'data'
+                        )
+                    ),
+                    new Column(
+                        'updated_at',
+                        array(
+                            'type' => Column::TYPE_INTEGER,
+                            'size' => 11,
+                            'after' => 'created_at'
+                        )
+                    )
+                ),
+                'indexes' => array(
+                    new Index('PRIMARY', array('name'), null),
+                    new Index('type', array('type'), null)
+                ),
+                'options' => array(
+                    'TABLE_TYPE' => 'BASE TABLE',
+                    'AUTO_INCREMENT' => '',
+                    'ENGINE' => 'InnoDB',
+                    'TABLE_COLLATION' => 'latin1_swedish_ci'
+                ),
+            )
+        );
+    }
+
+    /**
+     * Run the migrations
+     *
+     * @return void
+     */
+    public function up()
+    {
+
+    }
+
+    /**
+     * Reverse the migrations
+     *
+     * @return void
+     */
+    public function down()
+    {
+
+    }
+
+}

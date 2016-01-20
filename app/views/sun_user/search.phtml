@@ -1,0 +1,81 @@
+<?php
+/**
+ * @var \Phalcon\Mvc\View\Engine\Php $this
+ */
+?>
+
+<?php use Phalcon\Tag; ?>
+
+<div class="row">
+    <nav>
+        <ul class="pager">
+            <li class="previous"><?php echo $this->tag->linkTo(array("sun_user/index", "Go Back")); ?></li>
+            <li class="next"><?php echo $this->tag->linkTo(array("sun_user/new", "Create ")); ?></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="page-header">
+    <h1>Search result</h1>
+</div>
+
+<?php echo $this->getContent(); ?>
+
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+            <th>Username</th>
+            <th>Password Of Hash</th>
+            <th>Password Of Reset Of Token</th>
+            <th>Email</th>
+            <th>Realname</th>
+            <th>Status</th>
+            <th>Create Of User</th>
+            <th>Created</th>
+            <th>Updated</th>
+
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($page->items as $sun_user): ?>
+            <tr>
+                <td><?php echo $sun_user->getId() ?></td>
+            <td><?php echo $sun_user->getUsername() ?></td>
+            <td><?php echo $sun_user->getPasswordHash() ?></td>
+            <td><?php echo $sun_user->getPasswordResetToken() ?></td>
+            <td><?php echo $sun_user->getEmail() ?></td>
+            <td><?php echo $sun_user->getRealname() ?></td>
+            <td><?php echo $sun_user->getStatus() ?></td>
+            <td><?php echo $sun_user->getCreateUser() ?></td>
+            <td><?php echo $sun_user->getCreatedAt() ?></td>
+            <td><?php echo $sun_user->getUpdatedAt() ?></td>
+
+                <td><?php echo $this->tag->linkTo(array("sun_user/edit/" . $sun_user->getId(), "Edit")); ?></td>
+                <td><?php echo $this->tag->linkTo(array("sun_user/delete/" . $sun_user->getId(), "Delete")); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+</div>
+
+<div class="row">
+    <div class="col-sm-1">
+        <p class="pagination" style="line-height: 1.42857;padding: 6px 12px;">
+            <?php echo $page->current, "/", $page->total_pages ?>
+        </p>
+    </div>
+    <div class="col-sm-11">
+        <nav>
+            <ul class="pagination">
+                <li><?php echo $this->tag->linkTo("sun_user/search", "First") ?></li>
+                <li><?php echo $this->tag->linkTo("sun_user/search?page=" . $page->before, "Previous") ?></li>
+                <li><?php echo $this->tag->linkTo("sun_user/search?page=" . $page->next, "Next") ?></li>
+                <li><?php echo $this->tag->linkTo("sun_user/search?page=" . $page->last, "Last") ?></li>
+            </ul>
+        </nav>
+    </div>
+</div>
